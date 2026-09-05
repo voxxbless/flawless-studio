@@ -1,0 +1,1626 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flawless Studio — Marketing, Content & Brand Handling</title>
+  <link rel="icon" type="image/png" href="flawless-logo-full.png">
+  <link rel="shortcut icon" type="image/png" href="flawless-logo-full.png">
+  <link rel="apple-touch-icon" href="flawless-logo-full.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Work+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #14110F;
+      --bg-panel: #1C1815;
+      --bg-panel-2: #201B17;
+      --paper: #F3EEE3;
+      --muted: #A79E90;
+      --accent: #FF4425;
+      --accent-soft: rgba(255, 68, 37, 0.14);
+      --pop: #E8FF5B;
+      --brass: #C9A227;
+      --line: #34302A;
+      --line-soft: #262220;
+      --radius: 3px;
+      --wrap: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--paper);
+      font-family: 'Work Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Big Shoulders Display', sans-serif;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+      margin: 0;
+      line-height: 0.95;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .wrap {
+      max-width: var(--wrap);
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: 2px solid var(--brass);
+      outline-offset: 3px;
+    }
+
+    /* ---------- Buttons ---------- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Work Sans', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 13px 24px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+    }
+
+    .btn-accent {
+      background: var(--accent);
+      color: #17110D;
+    }
+
+    .btn-accent:hover {
+      background: #ff5b3d;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--paper);
+      border-color: var(--line);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--paper);
+    }
+
+    .btn {
+      transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease, transform 0.12s ease;
+    }
+
+    .btn:active {
+      transform: scale(0.96);
+    }
+
+    /* ---------- Header ---------- */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(20, 17, 15, 0.92);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 18px;
+      padding-bottom: 18px;
+      gap: 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-family: 'Big Shoulders Display', sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .logo .mark {
+      width: 12px;
+      height: 12px;
+      background: var(--accent);
+      border-radius: 1px;
+      flex-shrink: 0;
+    }
+
+    .logo-icon {
+      height: 26px;
+      width: auto;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover .logo-icon {
+      transform: rotate(-8deg) scale(1.08);
+    }
+
+    .main-nav {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .main-nav a {
+      position: relative;
+      text-decoration: none;
+      font-size: 15px;
+      color: var(--muted);
+      transition: color 0.15s ease;
+    }
+
+    .main-nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 100%;
+      height: 2px;
+      background: var(--pop);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.2s ease;
+    }
+
+    .main-nav a:hover {
+      color: var(--paper);
+    }
+
+    .main-nav a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .header-cta {
+      flex-shrink: 0;
+    }
+
+    .nav-toggle {
+      display: none;
+      background: transparent;
+      border: 1px solid var(--line);
+      color: var(--paper);
+      font: 600 13px 'Work Sans', sans-serif;
+      padding: 10px 12px;
+      cursor: pointer;
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      padding: 84px 0 96px;
+      border-bottom: 1px solid var(--line-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .docket {
+      position: relative;
+      display: inline-block;
+      font-family: 'Work Sans', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--brass);
+      padding: 6px 10px;
+      margin-bottom: 22px;
+      margin-left: -10px;
+      overflow: hidden;
+      transform: rotate(-1.5deg);
+    }
+
+    .docket::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--paper);
+      transform-origin: left;
+      animation: wipe 0.7s 0.15s cubic-bezier(.65, 0, .35, 1) forwards;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 6.4vw, 78px);
+      max-width: 12ch;
+      opacity: 0;
+      transform: translateY(14px);
+      animation: rise 0.7s 0.55s ease forwards;
+    }
+
+    .hero-sub {
+      margin: 26px 0 34px;
+      max-width: 46ch;
+      font-size: 18px;
+      color: var(--muted);
+      opacity: 0;
+      transform: translateY(14px);
+      animation: rise 0.7s 0.75s ease forwards;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(14px);
+      animation: rise 0.7s 0.9s ease forwards;
+    }
+
+    .hero-mark {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 320px;
+    }
+
+    .brand-logo {
+      width: 100%;
+      max-width: 360px;
+      height: auto;
+      opacity: 0;
+      transform: scale(1.08);
+      animation: stamp-in 0.6s 1.05s cubic-bezier(.2, 1.4, .4, 1) forwards;
+    }
+
+    @keyframes wipe {
+      to {
+        transform: scaleX(0);
+      }
+    }
+
+    @keyframes rise {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes stamp-in {
+      0% {
+        opacity: 0;
+        transform: scale(1.16);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .docket::after {
+        animation: none;
+        display: none;
+      }
+
+      .hero h1,
+      .hero-sub,
+      .hero-actions,
+      .brand-logo {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+
+    /* ---------- Marquee ---------- */
+    .marquee {
+      background: var(--pop);
+      color: var(--bg);
+      overflow: hidden;
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 22s linear infinite;
+    }
+
+    .marquee:hover .marquee-track {
+      animation-play-state: paused;
+    }
+
+    .marquee-track span {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-family: 'Big Shoulders Display', sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+      padding: 14px 0;
+      white-space: nowrap;
+    }
+
+    .marquee-track span::after {
+      content: "\2022";
+      margin: 0 14px;
+      color: var(--bg);
+      opacity: 0.5;
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .marquee-track {
+        animation: none;
+      }
+    }
+
+    /* ---------- Section shared ---------- */
+    section {
+      padding: 96px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 24px;
+      margin-bottom: 56px;
+      flex-wrap: wrap;
+    }
+
+    .section-head h2 {
+      font-size: clamp(32px, 4vw, 46px);
+    }
+
+    .section-sub {
+      color: var(--muted);
+      max-width: 40ch;
+      font-size: 16px;
+      margin: 0;
+    }
+
+    /* ---------- Agreement / Services ---------- */
+    .agreement {
+      background: var(--bg-panel);
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .clause-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .clause-list li {
+      display: grid;
+      grid-template-columns: 90px 1fr 1.4fr;
+      gap: 32px;
+      padding: 30px 14px;
+      margin: 0 -14px;
+      border-bottom: 1px solid var(--line);
+      align-items: baseline;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .clause-list li:hover {
+      transform: translateX(10px);
+      background: var(--bg-panel-2);
+    }
+
+    .clause-no {
+      font-family: 'Big Shoulders Display', sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      color: var(--brass);
+      transition: color 0.2s ease;
+    }
+
+    .clause-list li:hover .clause-no {
+      color: var(--pop);
+    }
+
+    .clause-list h3 {
+      font-size: 24px;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    .clause-list p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 50ch;
+    }
+
+    /* ---------- Case files ---------- */
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .case-card {
+      background: var(--bg);
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: relative;
+      z-index: 1;
+      transition: transform 0.22s ease, background 0.22s ease;
+    }
+
+    .case-card:hover {
+      transform: translateY(-6px) rotate(-0.5deg) scale(1.015);
+      background: var(--bg-panel-2);
+      z-index: 2;
+    }
+
+    .case-card:hover .case-tag {
+      background: var(--pop);
+      border-color: var(--pop);
+      color: var(--bg);
+    }
+
+    .case-file-no {
+      font-size: 12.5px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .case-card h3 {
+      font-size: 26px;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    .case-tag {
+      display: inline-block;
+      width: fit-content;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--accent);
+      border: 1px solid var(--accent-soft);
+      background: var(--accent-soft);
+      padding: 4px 10px;
+      border-radius: var(--radius);
+      transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .case-card p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* ---------- Case File Card Interactive & Media ---------- */
+    .case-card-clickable {
+      cursor: pointer;
+    }
+
+    .case-card-clickable:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    .case-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .case-card-header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .case-pop-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid rgba(255, 68, 37, 0.28);
+      padding: 3px 8px;
+      border-radius: var(--radius);
+      transition: all 0.2s ease;
+    }
+
+    .case-card-clickable:hover .case-pop-hint {
+      background: var(--pop);
+      border-color: var(--pop);
+      color: var(--bg);
+      transform: translateY(-1px);
+    }
+
+    .case-thumb-container {
+      margin-top: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .case-thumb-wrapper {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      height: 190px;
+      background: #0d0b0a;
+      border: 1px solid var(--line);
+      box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .case-thumb-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 25%;
+      display: block;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+    }
+
+    .case-card-clickable:hover .case-thumb-img {
+      transform: scale(1.05);
+      filter: brightness(1.08);
+    }
+
+    .case-thumb-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(20, 17, 15, 0.88) 0%, rgba(20, 17, 15, 0.25) 55%, transparent 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.9;
+      transition: all 0.25s ease;
+    }
+
+    .case-card-clickable:hover .case-thumb-overlay {
+      opacity: 1;
+      background: linear-gradient(to top, rgba(20, 17, 15, 0.92) 0%, rgba(20, 17, 15, 0.45) 55%, rgba(20, 17, 15, 0.2) 100%);
+    }
+
+    .case-thumb-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      border-radius: var(--radius);
+      background: rgba(20, 17, 15, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid var(--accent);
+      color: var(--paper);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+      transform: translateY(3px);
+      transition: all 0.25s ease;
+    }
+
+    .case-card-clickable:hover .case-thumb-btn {
+      transform: translateY(0) scale(1.03);
+      background: var(--accent);
+      color: #17110D;
+      border-color: var(--accent);
+    }
+
+    .case-file-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--muted);
+      padding: 2px 2px 0;
+    }
+
+    .case-file-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: inherit;
+      font-size: 12px;
+      color: var(--brass);
+      font-weight: 500;
+    }
+
+    .case-file-action {
+      font-weight: 600;
+      color: var(--accent);
+      transition: all 0.2s ease;
+    }
+
+    .case-card-clickable:hover .case-file-action {
+      color: var(--pop);
+      transform: translateX(3px);
+    }
+
+    /* ---------- Case File Modal (Pop-out Lightbox) ---------- */
+    .case-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.28s;
+    }
+
+    .case-modal.is-open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .case-modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 8, 7, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .case-modal-dialog {
+      position: relative;
+      z-index: 2;
+      background: var(--bg-panel);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      box-shadow: 0 30px 80px -15px rgba(0, 0, 0, 0.95), 0 0 50px -10px rgba(255, 68, 37, 0.25);
+      max-width: min(94vw, 960px);
+      max-height: 94vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transform: scale(0.9) translateY(20px);
+      transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .case-modal.is-open .case-modal-dialog {
+      transform: scale(1) translateY(0);
+    }
+
+    .case-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 24px;
+      background: var(--bg-panel-2);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .case-modal-info {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .case-modal-title {
+      font-size: 20px;
+      letter-spacing: 0.02em;
+      color: var(--paper);
+      margin: 0;
+    }
+
+    .case-modal-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .case-modal-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 7px 14px;
+      border-radius: var(--radius);
+      background: var(--bg);
+      border: 1px solid var(--line);
+      color: var(--paper);
+      text-decoration: none;
+      transition: all 0.18s ease;
+    }
+
+    .case-modal-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .case-modal-close {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 7px 16px;
+      border-radius: var(--radius);
+      background: var(--accent);
+      border: 1px solid var(--accent);
+      color: #17110D;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .case-modal-close:hover {
+      background: #ff5b3d;
+      border-color: #ff5b3d;
+      transform: scale(1.03);
+    }
+
+    .case-modal-close:active {
+      transform: scale(0.96);
+    }
+
+    .case-modal-body {
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0d0b0a;
+      overflow: auto;
+      max-height: calc(94vh - 130px);
+    }
+
+    .case-modal-img {
+      max-width: 100%;
+      max-height: calc(90vh - 150px);
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 4px;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.7);
+      display: block;
+    }
+
+    .case-modal-footer {
+      padding: 10px 24px;
+      background: var(--bg-panel-2);
+      border-top: 1px solid var(--line-soft);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .case-modal-footer kbd {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      padding: 2px 6px;
+      font-family: inherit;
+      font-size: 11px;
+      color: var(--paper);
+    }
+
+    @media (max-width: 768px) {
+      .case-modal {
+        padding: 12px;
+      }
+
+      .case-modal-header {
+        padding: 12px 16px;
+        flex-wrap: wrap;
+      }
+
+      .case-modal-title {
+        font-size: 17px;
+      }
+
+      .case-modal-body {
+        padding: 10px;
+        max-height: calc(90vh - 120px);
+      }
+
+      .case-modal-img {
+        max-height: calc(85vh - 140px);
+      }
+
+      .case-modal-footer {
+        padding: 8px 16px;
+        font-size: 11px;
+      }
+    }
+
+    /* ---------- Why ---------- */
+    .why-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 56px;
+    }
+
+    .why-grid h2 {
+      font-size: clamp(32px, 4vw, 46px);
+      margin-bottom: 18px;
+    }
+
+    .why-grid>div:first-child p {
+      color: var(--muted);
+      max-width: 38ch;
+      font-size: 17px;
+    }
+
+    .reasons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px 32px;
+    }
+
+    .reason h4 {
+      font-family: 'Work Sans', sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+      margin: 0 0 8px;
+      text-transform: none;
+    }
+
+    .reason p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .reason {
+      border-top: 2px solid var(--accent);
+      padding-top: 14px;
+    }
+
+    /* ---------- Statements ---------- */
+    .statements {
+      background: var(--bg-panel);
+      border-top: 1px solid var(--line-soft);
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .statement-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+
+    .statement {
+      background: var(--bg-panel-2);
+      border: 1px solid var(--line);
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 220px;
+    }
+
+    .statement p.quote {
+      font-family: 'Big Shoulders Display', sans-serif;
+      font-weight: 600;
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 22px;
+      line-height: 1.25;
+      margin: 0 0 24px;
+    }
+
+    .statement .sig {
+      border-top: 1px dashed var(--line);
+      padding-top: 14px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .statement .sig strong {
+      color: var(--paper);
+      display: block;
+      font-weight: 600;
+    }
+
+    /* ---------- Contact ---------- */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 56px;
+    }
+
+    .contact h2 {
+      font-size: clamp(32px, 4.4vw, 50px);
+      margin-bottom: 18px;
+    }
+
+    .contact-copy p {
+      color: var(--muted);
+      max-width: 40ch;
+      font-size: 17px;
+    }
+
+    .contact-direct {
+      margin-top: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contact-direct a {
+      text-decoration: none;
+      font-size: 16px;
+      color: var(--paper);
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 12px;
+      width: fit-content;
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+
+    .contact-direct a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .contact-direct span {
+      display: block;
+      font-size: 12.5px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .contact-form {
+      background: var(--bg-panel);
+      border: 1px solid var(--line);
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .form-row {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-row label {
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .form-row input,
+    .form-row select,
+    .form-row textarea {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      color: var(--paper);
+      font-family: 'Work Sans', sans-serif;
+      font-size: 15px;
+      padding: 12px 14px;
+      border-radius: var(--radius);
+    }
+
+    .form-row textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-row input:focus,
+    .form-row select:focus,
+    .form-row textarea:focus {
+      border-color: var(--brass);
+    }
+
+    .form-note {
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.4;
+      transition: color 0.2s ease;
+    }
+
+    .form-note.success {
+      color: var(--pop);
+      display: block;
+    }
+
+    .form-note.error {
+      color: var(--accent);
+      display: block;
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      border-top: 1px solid var(--line-soft);
+      padding: 64px 0 40px;
+    }
+
+    .footer-stamp {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 56px;
+    }
+
+    .footer-stamp img {
+      width: 100%;
+      max-width: 260px;
+      opacity: 0.92;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-inner .logo {
+      font-size: 18px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .footer-links a {
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: var(--paper);
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 860px) {
+      .header-inner {
+        position: relative;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .main-nav {
+        display: none;
+        position: absolute;
+        left: 20px;
+        right: 20px;
+        top: calc(100% + 1px);
+        padding: 10px 16px;
+        background: var(--bg-panel);
+        border: 1px solid var(--line);
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .main-nav a {
+        display: block;
+        padding: 12px 0;
+      }
+
+      .site-header.nav-open .main-nav {
+        display: flex;
+      }
+
+      .site-header.nav-open .nav-toggle {
+        color: var(--pop);
+        border-color: var(--pop);
+      }
+
+      .header-cta {
+        display: none;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-mark {
+        order: -1;
+        min-height: 200px;
+      }
+
+      .stamp {
+        width: 160px;
+        height: 160px;
+      }
+
+      .clause-list li {
+        grid-template-columns: 50px 1fr;
+      }
+
+      .clause-list li>p {
+        grid-column: 2;
+      }
+
+      .case-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .why-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .reasons {
+        grid-template-columns: 1fr;
+      }
+
+      .statement-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 64px 0;
+      }
+
+      .wrap {
+        padding: 0 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a href="#top" class="logo"><img src="flawless-mark.png" alt="" class="logo-icon">Flawless Studio</a>
+      <nav>
+        <ul class="main-nav" id="main-nav">
+          <li><a href="#work">Work</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#why">Why us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menu</button>
+      <a href="#contact" class="btn btn-accent header-cta">Start working with us</a>
+    </div>
+  </header>
+
+  <main>
+
+    <section id="top" class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <span class="docket">Docket No. 001 — Flawless Studio</span>
+          <h1>Your brand isn't boring.<br>Your marketing is.</h1>
+          <p class="hero-sub">Flawless Studio runs the strategy, content, scripts, edits and social pages for brands and
+            events that refuse to blend in — planned, made and handled end to end, by us.</p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-accent">Start working with us</a>
+            <a href="#work" class="btn btn-ghost">See the work</a>
+          </div>
+        </div>
+        <div class="hero-mark">
+          <img src="flawless-logo-full.png" alt="Flawless Studio — Create. Connect. Convert." class="brand-logo">
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Marketing strategy</span>
+        <span>Content creation</span>
+        <span>Social media handling</span>
+        <span>Video editing</span>
+        <span>Script writing</span>
+        <span>Poster design</span>
+        <span>Marketing strategy</span>
+        <span>Content creation</span>
+        <span>Social media handling</span>
+        <span>Video editing</span>
+        <span>Script writing</span>
+        <span>Poster design</span>
+      </div>
+    </div>
+
+    <section id="services" class="agreement">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>The agreement</h2>
+          <p class="section-sub">Five clauses. Everything that's covered once you sign with us — no add-ons, no fine
+            print.</p>
+        </div>
+        <ol class="clause-list">
+          <li>
+            <span class="clause-no">01</span>
+            <h3>Marketing strategy</h3>
+            <p>Positioning, messaging and a channel plan built around who actually buys from you — not a generic
+              quarterly calendar.</p>
+          </li>
+          <li>
+            <span class="clause-no">02</span>
+            <h3>Content creation</h3>
+            <p>Photo, video and design output made to be posted, not just made to look good in a deck.</p>
+          </li>
+          <li>
+            <span class="clause-no">03</span>
+            <h3>Social media handling</h3>
+            <p>Posting, captions, community replies and growth tracking, run daily — not left to whoever on your team
+              has time that week.</p>
+          </li>
+          <li>
+            <span class="clause-no">04</span>
+            <h3>Video editing</h3>
+            <p>Raw footage cut into reels, ads and highlight edits — paced, sound-designed and sized for wherever it's
+              going up.</p>
+          </li>
+          <li>
+            <span class="clause-no">05</span>
+            <h3>Script writing</h3>
+            <p>Reels, ads, voiceovers and video scripts written to sound like a person, hook fast, and hold attention to
+              the end.</p>
+          </li>
+          <li>
+            <span class="clause-no">06</span>
+            <h3>Poster design</h3>
+            <p>Event posters and promo creatives designed to stop the scroll — sized and ready for every platform you
+              need them on.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="work" class="cases">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Case files</h2>
+          <p class="section-sub">Example work only, for now — this gets replaced with real projects as they come in.</p>
+        </div>
+        <div class="case-grid">
+          <article class="case-card">
+            <span class="case-file-no">Case File No. 001</span>
+            <span class="case-tag">Reels / Videos</span>
+            <h3>Reels / Videos</h3>
+            <p>Rebuilt the Instagram from a product catalog into a brand people actually screenshot — new visual
+              identity, scripted reels, weekly drops.</p>
+          </article>
+          <article class="case-card">
+            <span class="case-file-no">Case File No. 002</span>
+            <span class="case-tag">Poster</span>
+            <h3>Poster</h3>
+            <p>Full poster and promo set for events and campaigns — invite design, countdown content and scroll-stopping visual creatives.</p>
+          </article>
+          <article class="case-card">
+            <span class="case-file-no">Case File No. 003</span>
+            <span class="case-tag">Script</span>
+            <h3>Script</h3>
+            <p>Video scripts, reels copy, and narrative concepts written to sound like a person, hook fast, and hold attention to the end.</p>
+          </article>
+          <article class="case-card">
+            <span class="case-file-no">Case File No. 004</span>
+            <span class="case-tag">Brand Strategy</span>
+            <h3>Brand Strategy</h3>
+            <p>Market positioning, brand voice, and actionable content roadmaps built around who actually buys from you — never generic.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="why" class="why">
+      <div class="wrap why-grid">
+        <div>
+          <h2>Why brands stick around</h2>
+          <p>We're not a content farm rotating your account between five clients and a junior. It's a small team that
+            actually knows your brand — and stays on it.</p>
+        </div>
+        <div class="reasons">
+          <div class="reason">
+            <h4>One team, start to finish</h4>
+            <p>The people who write your strategy are the same ones writing your captions. Nothing gets lost in a
+              handoff.</p>
+          </div>
+          <div class="reason">
+            <h4>Founder-level attention</h4>
+            <p>Your account isn't handed off to whoever's free. It gets reviewed by the people who run this studio.</p>
+          </div>
+          <div class="reason">
+            <h4>Everything written in-house</h4>
+            <p>Scripts, captions and copy are written by us for your brand's voice — never templated, never generic.</p>
+          </div>
+          <div class="reason">
+            <h4>Built for how Instagram works now</h4>
+            <p>We plan around what actually performs today, not what worked two algorithm updates ago.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="statements">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Statements on record</h2>
+          <p class="section-sub">Placeholder quotes — replace with real feedback from your clients once you have it on
+            file.</p>
+        </div>
+        <div class="statement-grid">
+          <div class="statement">
+            <p class="quote">"They took over our Instagram in the first month and it finally looked like one brand
+              instead of five different people posting."</p>
+            <div class="sig"><strong>Client name, Title</strong>Company name</div>
+          </div>
+          <div class="statement">
+            <p class="quote">"The scripts they write sound like us, not like an agency. That's the part most people
+              can't do."</p>
+            <div class="sig"><strong>Client name, Title</strong>Company name</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="wrap contact-grid">
+        <div class="contact-copy">
+          <h2>Let's put it in writing.</h2>
+          <p>Tell us about your brand and what's not working right now. We'll reply with next steps, not a sales script.
+          </p>
+          <div class="contact-direct">
+            <a href="tel:+917756019909"><span>Call / WhatsApp</span>+91 77560 19909</a>
+            <a href="mailto:flawless.studio.gm@gmail.com"><span>Email</span>flawless.studio.gm@gmail.com</a>
+            <a href="https://instagram.com/flawless.studio.gm" target="_blank"
+              rel="noopener"><span>Instagram</span>@flawless.studio.gm</a>
+          </div>
+        </div>
+        <form class="contact-form" id="contactForm">
+          <div class="form-row">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-row">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-row">
+            <label for="project">What do you need help with</label>
+            <select id="project" name="project">
+              <option>Marketing strategy</option>
+              <option>Content creation</option>
+              <option>Script writing</option>
+              <option>Brand handling</option>
+              <option>Instagram management</option>
+              <option>All of the above</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-accent">Send it over</button>
+          <p class="form-note" id="formNote">We'll get back to you within two business days.</p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-stamp">
+        <img src="flawless-logo-full.png" alt="Flawless Studio — Create. Connect. Convert.">
+      </div>
+      <div class="footer-inner">
+        <a href="#top" class="logo"><img src="flawless-mark.png" alt="" class="logo-icon">Flawless Studio</a>
+        <ul class="footer-links">
+          <li><a href="#work">Work</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#why">Why us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <p class="footer-copy">© 2026 Flawless Studio.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    // EmailJS Configuration
+    const EMAILJS_PUBLIC_KEY = 'WovNZseTIALPA9Vps';
+    const EMAILJS_SERVICE_ID = 'service_4iwytjl';
+    const EMAILJS_TEMPLATE_ID = 'template_7c4ux6v';
+
+    // Initialize EmailJS
+    if (window.emailjs) {
+      emailjs.init({
+        publicKey: EMAILJS_PUBLIC_KEY
+      });
+    }
+
+    const form = document.getElementById('contactForm');
+    const note = document.getElementById('formNote');
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const siteHeader = document.querySelector('.site-header');
+    const navToggle = document.querySelector('.nav-toggle');
+
+    navToggle.addEventListener('click', function () {
+      const isOpen = siteHeader.classList.toggle('nav-open');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+      navToggle.textContent = isOpen ? 'Close' : 'Menu';
+    });
+
+    document.querySelectorAll('.main-nav a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        siteHeader.classList.remove('nav-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.textContent = 'Menu';
+      });
+    });
+
+    function burstConfetti(originEl) {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const colors = ['#FF4425', '#E8FF5B', '#C9A227', '#F3EEE3'];
+      const rect = originEl.getBoundingClientRect();
+      const originX = rect.left + rect.width / 2;
+      const originY = rect.top + window.scrollY;
+      for (let i = 0; i < 26; i++) {
+        const piece = document.createElement('span');
+        const size = 6 + Math.random() * 6;
+        piece.style.position = 'absolute';
+        piece.style.left = originX + 'px';
+        piece.style.top = originY + 'px';
+        piece.style.width = size + 'px';
+        piece.style.height = size * 0.4 + 'px';
+        piece.style.background = colors[i % colors.length];
+        piece.style.pointerEvents = 'none';
+        piece.style.zIndex = 999;
+        piece.style.borderRadius = '1px';
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 90 + Math.random() * 140;
+        const dx = Math.cos(angle) * distance;
+        const dy = Math.sin(angle) * distance - 60;
+        const rot = Math.random() * 520 - 260;
+        piece.style.transform = 'translate(0,0) rotate(0deg)';
+        piece.style.opacity = '1';
+        document.body.appendChild(piece);
+        void piece.offsetWidth;
+        piece.style.transition = 'transform 0.9s cubic-bezier(.2,.7,.3,1), opacity 0.9s ease';
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            piece.style.transform = `translate(${dx}px, ${dy}px) rotate(${rot}deg)`;
+            piece.style.opacity = '0';
+          });
+        });
+        setTimeout(() => piece.remove(), 950);
+      }
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const project = document.getElementById('project').value;
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !email || !message) return;
+
+      const originalBtnText = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+      note.className = 'form-note';
+      note.textContent = 'Transmitting inquiry...';
+
+      const templateParams = {
+        name: name,
+        from_name: name,
+        email: email,
+        from_email: email,
+        reply_to: email,
+        project: project,
+        message: message,
+        to_email: 'flawless.studio.gm@gmail.com'
+      };
+
+      emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, EMAILJS_PUBLIC_KEY)
+        .then(function (response) {
+          burstConfetti(submitBtn);
+          note.textContent = "Thank you! Your message has been sent. We'll get back to you shortly.";
+          note.className = 'form-note success';
+          form.reset();
+        })
+        .catch(function (error) {
+          console.error('EmailJS send failed:', error);
+          const errDetail = error && (error.text || error.message) ? (': ' + (error.text || error.message)) : '';
+          note.textContent = "Unable to send inquiry" + errDetail + ". Please try again.";
+          note.className = 'form-note error';
+        })
+        .finally(function () {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalBtnText;
+        });
+    });
+
+  </script>
+
+</body>
+
+</html>
