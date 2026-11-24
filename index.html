@@ -1067,6 +1067,171 @@
       }
     }
 
+    /* ---------- Case File 002 Poster Strip & Lightbox Gallery ---------- */
+    .case-poster-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+      padding: 4px;
+      background: #0d0b0a;
+    }
+
+    .case-poster-tile {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border-radius: 2px;
+      background: #14110F;
+    }
+
+    .case-poster-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 22%;
+      display: block;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+    }
+
+    .case-poster-tile:hover img {
+      transform: scale(1.06);
+      filter: brightness(1.08);
+    }
+
+    .case-poster-grid .case-thumb-overlay {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .case-card-clickable:hover .case-poster-grid .case-thumb-overlay,
+    .case-card-clickable:focus-visible .case-poster-grid .case-thumb-overlay {
+      opacity: 1;
+    }
+
+    .case-modal-poster-dialog {
+      width: min(94vw, 820px);
+    }
+
+    .case-modal-poster-body {
+      position: relative;
+      flex-direction: column;
+      gap: 12px;
+      padding: 16px 56px;
+    }
+
+    .case-modal-poster-stage {
+      position: relative;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .case-modal-poster-body .case-modal-img {
+      max-height: calc(78vh - 160px);
+    }
+
+    .case-modal-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 3;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: rgba(20, 17, 15, 0.88);
+      color: var(--paper);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+    }
+
+    .case-modal-nav:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #17110D;
+      transform: translateY(-50%) scale(1.06);
+    }
+
+    .case-modal-nav-prev {
+      left: 12px;
+    }
+
+    .case-modal-nav-next {
+      right: 12px;
+    }
+
+    .case-poster-thumbs {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding-top: 2px;
+    }
+
+    .case-poster-thumb-btn {
+      width: 54px;
+      height: 72px;
+      padding: 0;
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #14110F;
+      cursor: pointer;
+      opacity: 0.6;
+      transition: opacity 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+    }
+
+    .case-poster-thumb-btn:hover {
+      opacity: 0.92;
+      transform: translateY(-2px);
+    }
+
+    .case-poster-thumb-btn.is-active {
+      opacity: 1;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent);
+    }
+
+    .case-poster-thumb-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .case-modal-poster-body {
+        padding: 12px 44px;
+      }
+
+      .case-modal-poster-body .case-modal-img {
+        max-height: calc(74vh - 150px);
+      }
+
+      .case-modal-nav {
+        width: 32px;
+        height: 32px;
+      }
+
+      .case-modal-nav-prev {
+        left: 6px;
+      }
+
+      .case-modal-nav-next {
+        right: 6px;
+      }
+
+      .case-poster-thumb-btn {
+        width: 44px;
+        height: 60px;
+      }
+    }
+
     /* ---------- Why ---------- */
     .why-grid {
       display: grid;
@@ -1561,11 +1726,46 @@
               </div>
             </div>
           </article>
-          <article class="case-card">
-            <span class="case-file-no">Case File No. 002</span>
+          <article class="case-card case-card-clickable" id="casePosterCard" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open Case File No. 002 Poster gallery">
+            <div class="case-card-header">
+              <span class="case-file-no">Case File No. 002</span>
+              <span class="case-pop-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                <span>View Posters</span>
+              </span>
+            </div>
             <span class="case-tag">Poster</span>
             <h3>Poster</h3>
             <p>Full poster and promo set for events and campaigns — invite design, countdown content and scroll-stopping visual creatives.</p>
+            <div class="case-thumb-container">
+              <div class="case-thumb-wrapper case-poster-grid">
+                <div class="case-poster-tile" data-poster-index="0">
+                  <img src="poster-desi-baddie.jpg" alt="Desi Baddie poster" loading="lazy">
+                </div>
+                <div class="case-poster-tile" data-poster-index="1">
+                  <img src="poster-ferrari-296-gtb.jpg" alt="Ferrari 296 GTB poster" loading="lazy">
+                </div>
+                <div class="case-poster-tile" data-poster-index="2">
+                  <img src="poster-born-to-ride.jpg" alt="Born To Ride poster" loading="lazy">
+                </div>
+                <div class="case-thumb-overlay">
+                  <div class="case-thumb-btn">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                    <span>View 3 Posters</span>
+                  </div>
+                </div>
+                <div class="case-duration-pill">
+                  <span>3 Posters</span>
+                </div>
+              </div>
+              <div class="case-file-meta">
+                <span class="case-file-badge">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                  3 posters attached
+                </span>
+                <span class="case-file-action">View full posters &rarr;</span>
+              </div>
+            </div>
           </article>
           <article class="case-card">
             <span class="case-file-no">Case File No. 003</span>
@@ -1708,6 +1908,55 @@
       </div>
       <div class="case-modal-footer">
         <span class="case-modal-meta">Attachment: Video-46525.mp4 &bull; 0:46 &bull; Click outside or press <kbd>ESC</kbd> to close</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Case File Poster Modal (Pop-out Lightbox for Case File No. 002) -->
+  <div id="casePosterModal" class="case-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalPosterTitle">
+    <div class="case-modal-backdrop" id="modalPosterBackdrop"></div>
+    <div class="case-modal-dialog case-modal-poster-dialog">
+      <div class="case-modal-header">
+        <div class="case-modal-info">
+          <span class="case-file-no">Case File No. 002</span>
+          <span class="case-tag">Poster</span>
+          <h3 id="modalPosterTitle" class="case-modal-title">Poster &mdash; Desi Baddie</h3>
+        </div>
+        <div class="case-modal-actions">
+          <a id="modalPosterOpenLink" href="poster-desi-baddie.jpg" target="_blank" rel="noopener" class="case-modal-btn" title="Open full poster in new tab">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            <span>Open Image</span>
+          </a>
+          <button type="button" class="case-modal-close" id="modalPosterCloseBtn" aria-label="Close modal">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            <span>Close</span>
+          </button>
+        </div>
+      </div>
+      <div class="case-modal-body case-modal-poster-body">
+        <button type="button" class="case-modal-nav case-modal-nav-prev" id="modalPosterPrevBtn" aria-label="Previous poster">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <div class="case-modal-poster-stage">
+          <img id="caseModalPosterImg" class="case-modal-img" src="poster-desi-baddie.jpg" alt="Desi Baddie poster">
+        </div>
+        <button type="button" class="case-modal-nav case-modal-nav-next" id="modalPosterNextBtn" aria-label="Next poster">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+        <div class="case-poster-thumbs" id="modalPosterThumbs" aria-label="Poster thumbnails">
+          <button type="button" class="case-poster-thumb-btn is-active" data-poster-index="0" aria-label="View Desi Baddie poster">
+            <img src="poster-desi-baddie.jpg" alt="Desi Baddie thumbnail">
+          </button>
+          <button type="button" class="case-poster-thumb-btn" data-poster-index="1" aria-label="View Ferrari 296 GTB poster">
+            <img src="poster-ferrari-296-gtb.jpg" alt="Ferrari 296 GTB thumbnail">
+          </button>
+          <button type="button" class="case-poster-thumb-btn" data-poster-index="2" aria-label="View Born To Ride poster">
+            <img src="poster-born-to-ride.jpg" alt="Born To Ride thumbnail">
+          </button>
+        </div>
+      </div>
+      <div class="case-modal-footer">
+        <span id="modalPosterMeta" class="case-modal-meta">Poster 1 of 3 &bull; poster-desi-baddie.jpg &bull; Use &larr; / &rarr; or press <kbd>ESC</kbd> to close</span>
       </div>
     </div>
   </div>
@@ -1912,6 +2161,114 @@
       window.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && caseModal.classList.contains('is-open')) {
           closeModal();
+        }
+      });
+    })();
+
+    // Case File 002 Poster Gallery Modal
+    (function () {
+      const posterCard = document.getElementById('casePosterCard');
+      const posterModal = document.getElementById('casePosterModal');
+      const modalBackdrop = document.getElementById('modalPosterBackdrop');
+      const modalCloseBtn = document.getElementById('modalPosterCloseBtn');
+      const modalPrevBtn = document.getElementById('modalPosterPrevBtn');
+      const modalNextBtn = document.getElementById('modalPosterNextBtn');
+      const modalImg = document.getElementById('caseModalPosterImg');
+      const modalTitle = document.getElementById('modalPosterTitle');
+      const modalOpenLink = document.getElementById('modalPosterOpenLink');
+      const modalMeta = document.getElementById('modalPosterMeta');
+      const thumbButtons = document.querySelectorAll('#modalPosterThumbs .case-poster-thumb-btn');
+      const cardTiles = document.querySelectorAll('#casePosterCard .case-poster-tile');
+
+      if (!posterCard || !posterModal || !modalImg) return;
+
+      const posters = [
+        { src: 'poster-desi-baddie.jpg', title: 'Desi Baddie', alt: 'Desi Baddie poster' },
+        { src: 'poster-ferrari-296-gtb.jpg', title: 'Ferrari 296 GTB', alt: 'Ferrari 296 GTB poster' },
+        { src: 'poster-born-to-ride.jpg', title: 'Born To Ride', alt: 'Born To Ride poster' }
+      ];
+
+      let activeIndex = 0;
+
+      function renderPoster(index) {
+        activeIndex = (index + posters.length) % posters.length;
+        const item = posters[activeIndex];
+        modalImg.src = item.src;
+        modalImg.alt = item.alt;
+        if (modalTitle) modalTitle.textContent = 'Poster \u2014 ' + item.title;
+        if (modalOpenLink) modalOpenLink.href = item.src;
+        if (modalMeta) {
+          modalMeta.innerHTML = 'Poster ' + (activeIndex + 1) + ' of ' + posters.length + ' &bull; ' + item.src + ' &bull; Use &larr; / &rarr; or press <kbd>ESC</kbd> to close';
+        }
+        thumbButtons.forEach(function (btn, idx) {
+          btn.classList.toggle('is-active', idx === activeIndex);
+        });
+      }
+
+      function openModal(startIndex) {
+        renderPoster(typeof startIndex === 'number' ? startIndex : 0);
+        posterModal.classList.add('is-open');
+        posterModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        if (modalCloseBtn) modalCloseBtn.focus();
+      }
+
+      function closeModal() {
+        posterModal.classList.remove('is-open');
+        posterModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        posterCard.focus();
+      }
+
+      cardTiles.forEach(function (tile) {
+        tile.addEventListener('click', function (e) {
+          e.stopPropagation();
+          const idx = parseInt(tile.getAttribute('data-poster-index'), 10);
+          openModal(isNaN(idx) ? 0 : idx);
+        });
+      });
+
+      posterCard.addEventListener('click', function () {
+        openModal(0);
+      });
+
+      posterCard.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openModal(0);
+        }
+      });
+
+      thumbButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const idx = parseInt(btn.getAttribute('data-poster-index'), 10);
+          if (!isNaN(idx)) renderPoster(idx);
+        });
+      });
+
+      if (modalPrevBtn) {
+        modalPrevBtn.addEventListener('click', function () {
+          renderPoster(activeIndex - 1);
+        });
+      }
+
+      if (modalNextBtn) {
+        modalNextBtn.addEventListener('click', function () {
+          renderPoster(activeIndex + 1);
+        });
+      }
+
+      if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
+      if (modalBackdrop) modalBackdrop.addEventListener('click', closeModal);
+
+      window.addEventListener('keydown', function (e) {
+        if (!posterModal.classList.contains('is-open')) return;
+        if (e.key === 'Escape') {
+          closeModal();
+        } else if (e.key === 'ArrowLeft') {
+          renderPoster(activeIndex - 1);
+        } else if (e.key === 'ArrowRight') {
+          renderPoster(activeIndex + 1);
         }
       });
     })();
